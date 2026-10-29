@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamSathi - Local Coaching Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --badge-gold: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 430px;
+            background: var(--card-bg);
+            min-height: 100vh;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        @media(min-width: 434px) {
+            .mobile-container { min-height: 850px; border-radius: 35px; border: 8px solid #1e293b; margin: 20px 0; }
+        }
+
+        .content-body { flex: 1; padding: 24px; padding-bottom: 90px; overflow-y: auto; }
+
+        /* Auth Screen Styles */
+        .auth-header { text-align: center; margin-top: 20px; }
+        .auth-illustration { width: 130px; height: 130px; background: #e8f5e9; border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 50px; }
+        .coaching-title { font-size: 22px; font-weight: 700; color: var(--text-main); margin: 0 0 5px 0; }
+        .coaching-sub { font-size: 13px; color: var(--text-muted); margin: 0 0 25px 0; line-height: 1.5; }
+        
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+        .form-control { width: 100%; padding: 12px 16px; box-sizing: border-box; border: 1px solid var(--border-color); border-radius: 12px; font-size: 14px; background: #fafafa; }
+        .form-control:focus { outline: none; border-color: var(--primary); background: #fff; }
+
+        .btn-main { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 14px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        .btn-main:hover { background: var(--primary-dark); }
+        .auth-switch { text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
+        .auth-switch span { color: var(--primary); font-weight: 600; }
+
+        /* Dashboard Styles */
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .user-info h2 { margin: 0; font-size: 18px; font-weight: 700; }
+        .user-info small { font-size: 12px; color: var(--text-muted); display: block; margin-top: 2px; }
+        .badge-pill { display: inline-block; padding: 2px 8px; font-size: 11px; font-weight: 600; border-radius: 6px; margin-top: 4px; background: #fef3c7; color: #d97706; }
+
+        .profile-img-container { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); cursor: pointer; background: #ddd; display: flex; align-items: center; justify-content: center; }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        .search-box { position: relative; margin-bottom: 25px; }
+        .search-box input { width: 100%; padding: 12px 16px 12px 42px; border-radius: 14px; border: 1px solid var(--border-color); background: #f8fafc; font-size: 14px; box-sizing: border-box; }
+        .search-box i { position: absolute; left: 15px; top: 15px; color: var(--text-muted); }
+
+        .section-title { font-size: 16px; font-weight: 700; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title span { font-size: 13px; color: var(--primary); cursor: pointer; }
+
+        .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
+        .quick-card { background: #fdfbf7; border: 1px solid var(--border-color); border-radius: 16px; padding: 15px 10px; text-align: center; cursor: pointer; transition: transform 0.2s; }
+        .quick-card:hover { transform: translateY(-2px); border-color: var(--primary); }
+        .quick-card i { font-size: 22px; color: var(--primary); margin-bottom: 8px; }
+        .quick-card h5 { margin: 0; font-size: 12px; font-weight: 600; color: var(--text-main); }
+
+        .event-card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; display: flex; gap: 15px; align-items: center; }
+        .event-date { background: #e8f5e9; color: var(--primary); padding: 8px 12px; border-radius: 10px; text-align: center; font-weight: 700; font-size: 13px; line-height: 1.2; }
+        .event-details h4 { margin: 0 0 4px 0; font-size: 14px; }
+        .event-details p { margin: 0; font-size: 12px; color: var(--text-muted); }
+
+        /* Bottom Nav */
+        .bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; background: #fff; border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 10px 0; box-sizing: border-box; z-index: 10; }
+        .nav-item { text-align: center; color: var(--text-muted); font-size: 11px; cursor: pointer; flex: 1; }
+        .nav-item i { font-size: 18px; display: block; margin-bottom: 3px; }
+        .nav-item.active { color: var(--primary); font-weight: 600; }
+
+        /* Footer Branding */
+        .footer-branding { text-align: center; font-size: 11px; color: var(--text-muted); padding: 15px 0 5px 0; border-top: 1px dashed var(--border-color); margin-top: 20px; }
+
+        .hidden { display: none !important; }
+        
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 100; }
+        .modal-card { background: #fff; width: 90%; max-width: 350px; padding: 20px; border-radius: 16px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <div class="content-body">
+            
+            <!-- AUTH SCREEN -->
+            <div id="authScreen">
+                <div class="auth-header">
+                    <div class="auth-illustration">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="coachingTitle" id="coachingNameDisp">Local Coaching</h2>
+                    <p class="coaching-sub" id="coachingDetailsDisp">लोड हो रहा है...</p>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginFormContainer">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label>मोबाइल नंबर (Mobile Number)</label>
+                            <input type="tel" id="loginMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label>6-Digit PIN</label>
+                            <input type="password" id="loginPin" class="form-control" placeholder="••••••" maxlength="6" required>
+                        </div>
+                        <div style="text-align: right; margin-bottom: 15px;">
+                            <a href="#" onclick="alert('कृपया अपने कोचिंग संचालक से संपर्क करें।')" style="font-size: 12px; color: var(--primary); text-decoration: none;">PIN भूल गए?</a>
+                        </div>
+                        <button type="submit" class="btn-main">लॉगिन करें (Login)</button>
+                    </form>
+                    <div class="auth-switch" onclick="toggleAuthMode()">नया खाता बनाएं? <span>Sign up</span></div>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="signupFormContainer" class="hidden">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label>पूरा नाम (Full Name)</label>
+                            <input type="text" id="regName" class="form-control" placeholder="अपना नाम लिखें" required>
+                        </div>
+                        <div class="form-group">
+                            <label>मोबाइल नंबर (Mobile Number)</label>
+                            <input type="tel" id="regMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label>कक्षा चुनें (Select Class)</label>
+                            <select id="regClass" class="form-control" required>
+                                <option value="">-- क्लास चुनें --</option>
+                                <option value="Bihar Board Class 10th">Bihar Board Class 10th (मैट्रिक)</option>
+                                <option value="Bihar Board Class 12th">Bihar Board Class 12th (इंटर)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>नया 6-Digit PIN सेट करें</label>
+                            <input type="password" id="regPin" class="form-control" placeholder="6-digit PIN" maxlength="6" required>
+                        </div>
+                        <button type="submit" class="btn-main">रजिस्टर करें (Sign up)</button>
+                    </form>
+                    <div class="auth-switch" onclick="toggleAuthMode()">पहले से खाता है? <span>Log in</span></div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD SCREEN -->
+            <div id="dashboardScreen" class="hidden">
+                <div class="dash-header">
+                    <div class="user-info">
+                        <h2 id="dashStudentName">Student Name</h2>
+                        <small id="dashStudentClass">Class 10th</small>
+                        <span class="badge-pill" id="dashBadge">⭐ Gold Scholar</span>
+                    </div>
+                    <div class="profile-img-container" onclick="openProfileEdit()" title="Profile Edit">
+                        <img id="dashProfilePic" src="https://via.placeholder.com/150" alt="Profile">
+                    </div>
+                </div>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search anything (Books, Tests, Notes)...">
+                </div>
+
+                <div class="section-title">Quick Access</div>
+                <div class="quick-grid">
+                    <div class="quick-card" onclick="alert('सभी पुस्तकें लोड हो रही हैं...')">
+                        <i class="fa-solid fa-book-open"></i>
+                        <h5>All Books</h5>
+                    </div>
+                    <div class="quick-card" onclick="alert('टेस्ट और क्विज़ सेक्शन खुलेगा')">
+                        <i class="fa-solid fa-file-pen"></i>
+                        <h5>Test & Quiz</h5>
+                    </div>
+                    <div class="quick-card" onclick="alert('रिपोर्ट कार्ड: आपने 3 टेस्ट दिए हैं, औसत स्कोर 85% है।')">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <h5>Report Card</h5>
+                    </div>
+                </div>
+
+                <div class="section-title">Upcoming Events <span>View Calendar</span></div>
+                <div class="event-card">
+                    <div class="event-date">MAY<br><span style="font-size:16px;">24</span></div>
+                    <div class="event-details">
+                        <h4>Bihar Board Mock Test</h4>
+                        <p><i class="fa-regular fa-clock"></i> 10:00 AM - 01:00 PM</p>
+                        <p><i class="fa-solid fa-location-dot"></i> Coaching Hall</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">MAY<br><span style="font-size:16px;">28</span></div>
+                    <div class="event-details">
+                        <h4>Parent-Teacher Meeting</h4>
+                        <p><i class="fa-regular fa-clock"></i> 02:00 PM - 04:00 PM</p>
+                        <p><i class="fa-solid fa-location-dot"></i> Room 204</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Branding -->
+            <div class="footer-branding">
+                Powered by <b>ExamSathi</b> B2B2C EdTech SaaS<br>© 2026 All Rights Reserved
+            </div>
+
+        </div>
+
+        <!-- Bottom Navigation Bar -->
+        <div class="bottom-nav hidden" id="bottomNav">
+            <div class="nav-item active"><i class="fa-solid fa-house"></i>Home</div>
+            <div class="nav-item" onclick="alert('Calendar View')"><i class="fa-regular fa-calendar"></i>Calendar</div>
+            <div class="nav-item" onclick="alert('Messages & Support')"><i class="fa-regular fa-message"></i>Messages</div>
+            <div class="nav-item" onclick="openProfileEdit()"><i class="fa-regular fa-user"></i>Profile</div>
+        </div>
+    </div>
+
+    <!-- Profile Edit Modal with Image Upload -->
+    <div id="profileModal" class="modal hidden">
+        <div class="modal-card">
+            <h3 style="margin-top:0;">प्रोफाइल अपडेट करें</h3>
+            <div class="form-group">
+                <label>नया नाम</label>
+                <input type="text" id="editName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>प्रोफाइल फोटो अपलोड करें (Upload Image)</label>
+                <input type="file" id="editPicFile" class="form-control" accept="image/*">
+            </div>
+            <button class="btn-main" onclick="saveProfile()">सेव करें</button>
+            <button class="btn-main" style="background:#ef4444; margin-top:8px;" onclick="logoutStudent()">लॉग आउट</button>
+            <button class="btn-main" style="background:#6b7280; margin-top:8px;" onclick="document.getElementById('profileModal').classList.add('hidden')">बंद करें</button>
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, where, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6smf3Ud6Cy1-8gTxjbtgQ0mvW3kv1MUM",
+            authDomain: "examsathi-58b12.firebaseapp.com",
+            projectId: "examsathi-58b12",
+            storageBucket: "examsathi-58b12.firebasestorage.app",
+            messagingSenderId: "423954962882",
+            appId: "1:423954962882:web:1e8f08f76186faebe75e5b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const coachingSlug = urlParams.get('slug') || 'sanjaymcc';
+
+        let currentCoaching = null;
+        let loggedInStudent = JSON.parse(localStorage.getItem("examsathi_student_session_" + coachingSlug));
+
+        async function initPortal() {
+            try {
+                const q = query(collection(db, "coachings"), where("coachingSlug", "==", coachingSlug));
+                const snap = await getDocs(q);
+                if (!snap.empty) {
+                    snap.forEach(doc => { currentCoaching = doc.data(); });
+                    document.getElementById("coachingNameDisp").innerText = currentCoaching.coachingName;
+                    document.getElementById("coachingDetailsDisp").innerText = `संचालक: ${currentCoaching.directorName} | पता: ${currentCoaching.address} | मो: ${currentCoaching.mobile}`;
+                } else {
+                    document.getElementById("coachingNameDisp").innerText = "ExamSathi Coaching Portal";
+                    document.getElementById("coachingDetailsDisp").innerText = "कोचिंग सेंटर नहीं मिला!";
+                }
+            } catch (e) { console.error(e); }
+
+            if (loggedInStudent) {
+                renderDashboard(loggedInStudent);
+            }
+        }
+
+        initPortal();
+
+        window.toggleAuthMode = function() {
+            document.getElementById("loginFormContainer").classList.toggle("hidden");
+            document.getElementById("signupFormContainer").classList.toggle("hidden");
+        }
+
+        // Login Handler
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const mobile = document.getElementById("loginMobile").value;
+            const pin = document.getElementById("loginPin").value;
+
+            const q = query(collection(db, "students"), where("coachingSlug", "==", coachingSlug), where("mobile", "==", mobile), where("pin", "==", pin));
+            const snap = await getDocs(q);
+
+            if (!snap.empty) {
+                let sData = null;
+                snap.forEach(doc => { sData = doc.data(); });
+                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(sData));
+                renderDashboard(sData);
+            } else {
+                alert("गलत मोबाइल नंबर या 6-digit PIN! कृपया पुनः प्रयास करें।");
+            }
+        });
+
+        // Signup Handler
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("regName").value;
+            const mobile = document.getElementById("regMobile").value;
+            const studentClass = document.getElementById("regClass").value;
+            const pin = document.format ? document.getElementById("regPin").value : document.getElementById("regPin").value;
+
+            const studentData = {
+                name, mobile, studentClass, pin, coachingSlug,
+                profilePic: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + name,
+                badge: "Gold Scholar",
+                createdAt: serverTimestamp()
+            };
+
+            await addDoc(collection(db, "students"), studentData);
+            localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(studentData));
+            renderDashboard(studentData);
+        });
+
+        function renderDashboard(student) {
+            document.getElementById("authScreen").classList.add("hidden");
+            document.getElementById("dashboardScreen").classList.remove("hidden");
+            document.getElementById("bottomNav").classList.remove("hidden");
+
+            document.getElementById("dashStudentName").innerText = student.name;
+            document.getElementById("dashStudentClass").innerText = student.studentClass;
+            document.getElementById("dashBadge").innerText = "⭐ " + (student.badge || "Gold Scholar");
+            document.getElementById("dashProfilePic").src = student.profilePic || "https://via.placeholder.com/150";
+        }
+
+        window.openProfileEdit = function() {
+            if(!loggedInStudent) loggedInStudent = JSON.parse(localStorage.getItem("examsathi_student_session_" + coachingSlug));
+            document.getElementById("editName").value = loggedInStudent.name;
+            document.getElementById("profileModal").classList.remove("hidden");
+        }
+
+        window.saveProfile = function() {
+            const newName = document.getElementById("editName").value;
+            const fileInput = document.getElementById("editPicFile");
+
+            loggedInStudent.name = newName;
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    loggedInStudent.profilePic = e.target.result; // Convert image to Base64
+                    localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
+                    renderDashboard(loggedInStudent);
+                    document.getElementById("profileModal").classList.add("hidden");
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
+                renderDashboard(loggedInStudent);
+                document.getElementById("profileModal").classList.add("hidden");
+            }
+        }
+
+        window.logoutStudent = function() {
+            localStorage.removeItem("examsathi_student_session_" + coachingSlug);
+            location.reload();
+        }
+    </script>
+</body>
+</html>
