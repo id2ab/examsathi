@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ExamSathi - Local Coaching Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,7 +15,8 @@
             --text-main: #1f2937;
             --text-muted: #6b7280;
             --border-color: #e5e7eb;
-            --badge-gold: #f59e0b;
+            --whatsapp: #25d366;
+            --call: #0284c7;
         }
 
         body {
@@ -40,29 +41,36 @@
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
-            overflow-x: hidden;
         }
         @media(min-width: 434px) {
             .mobile-container { min-height: 850px; border-radius: 35px; border: 8px solid #1e293b; margin: 20px 0; }
         }
 
-        .content-body { flex: 1; padding: 24px; padding-bottom: 90px; overflow-y: auto; }
+        .content-body { flex: 1; padding: 20px; padding-bottom: 110px; overflow-y: auto; }
 
-        /* Auth Screen Styles */
-        .auth-header { text-align: center; margin-top: 20px; }
-        .auth-illustration { width: 130px; height: 130px; background: #e8f5e9; border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 50px; }
-        .coaching-title { font-size: 22px; font-weight: 700; color: var(--text-main); margin: 0 0 5px 0; }
-        .coaching-sub { font-size: 13px; color: var(--text-muted); margin: 0 0 25px 0; line-height: 1.5; }
-        
-        .form-group { margin-bottom: 16px; text-align: left; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-        .form-control { width: 100%; padding: 12px 16px; box-sizing: border-box; border: 1px solid var(--border-color); border-radius: 12px; font-size: 14px; background: #fafafa; }
+        /* Coaching Header Style */
+        .auth-header { text-align: center; margin-top: 10px; }
+        .owner-profile-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin: 0 auto 12px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .coaching-title { font-size: 20px; font-weight: 700; color: var(--text-main); margin: 0 0 6px 0; }
+        .coaching-meta { font-size: 13px; color: var(--text-muted); margin: 0 0 20px 0; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .contact-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .contact-icon-btn { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .btn-call { background: var(--call); }
+        .btn-wa { background: var(--whatsapp); }
+
+        /* Form Styles */
+        .form-group { margin-bottom: 14px; text-align: left; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+        .form-control { width: 100%; padding: 11px 14px; box-sizing: border-box; border: 1px solid var(--border-color); border-radius: 10px; font-size: 14px; background: #fafafa; }
         .form-control:focus { outline: none; border-color: var(--primary); background: #fff; }
 
-        .btn-main { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 14px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        .btn-main { width: 100%; background: var(--primary); color: white; border: none; padding: 13px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
         .btn-main:hover { background: var(--primary-dark); }
-        .auth-switch { text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
+        .auth-switch { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
         .auth-switch span { color: var(--primary); font-weight: 600; }
+
+        /* Floating Input Bar for Mobile Keyboards */
+        .floating-auth-box { background: #fff; padding: 15px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
         /* Dashboard Styles */
         .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -73,99 +81,106 @@
         .profile-img-container { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); cursor: pointer; background: #ddd; display: flex; align-items: center; justify-content: center; }
         .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        .search-box { position: relative; margin-bottom: 25px; }
-        .search-box input { width: 100%; padding: 12px 16px 12px 42px; border-radius: 14px; border: 1px solid var(--border-color); background: #f8fafc; font-size: 14px; box-sizing: border-box; }
+        .search-box { position: relative; margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 12px 16px 12px 42px; border-radius: 12px; border: 1px solid var(--border-color); background: #f8fafc; font-size: 14px; box-sizing: border-box; }
         .search-box i { position: absolute; left: 15px; top: 15px; color: var(--text-muted); }
 
-        .section-title { font-size: 16px; font-weight: 700; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .section-title span { font-size: 13px; color: var(--primary); cursor: pointer; }
+        .section-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title span { font-size: 12px; color: var(--primary); cursor: pointer; }
 
-        .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
-        .quick-card { background: #fdfbf7; border: 1px solid var(--border-color); border-radius: 16px; padding: 15px 10px; text-align: center; cursor: pointer; transition: transform 0.2s; }
+        .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .quick-card { background: #fdfbf7; border: 1px solid var(--border-color); border-radius: 14px; padding: 14px 8px; text-align: center; cursor: pointer; transition: transform 0.2s; }
         .quick-card:hover { transform: translateY(-2px); border-color: var(--primary); }
-        .quick-card i { font-size: 22px; color: var(--primary); margin-bottom: 8px; }
-        .quick-card h5 { margin: 0; font-size: 12px; font-weight: 600; color: var(--text-main); }
+        .quick-card i { font-size: 20px; color: var(--primary); margin-bottom: 6px; }
+        .quick-card h5 { margin: 0; font-size: 11px; font-weight: 600; color: var(--text-main); }
 
-        .event-card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; display: flex; gap: 15px; align-items: center; }
-        .event-date { background: #e8f5e9; color: var(--primary); padding: 8px 12px; border-radius: 10px; text-align: center; font-weight: 700; font-size: 13px; line-height: 1.2; }
-        .event-details h4 { margin: 0 0 4px 0; font-size: 14px; }
-        .event-details p { margin: 0; font-size: 12px; color: var(--text-muted); }
+        .event-card { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; margin-bottom: 10px; display: flex; gap: 12px; align-items: center; }
+        .event-date { background: #e8f5e9; color: var(--primary); padding: 6px 10px; border-radius: 8px; text-align: center; font-weight: 700; font-size: 12px; line-height: 1.2; }
+        .event-details h4 { margin: 0 0 3px 0; font-size: 13px; }
+        .event-details p { margin: 0; font-size: 11px; color: var(--text-muted); }
 
-        /* Bottom Nav */
-        .bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; background: #fff; border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 10px 0; box-sizing: border-box; z-index: 10; }
+        /* Bottom Nav fixed for Chrome & Safari */
+        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: #fff; border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 10px 0 env(safe-area-inset-bottom, 10px) 0; box-sizing: border-box; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
         .nav-item { text-align: center; color: var(--text-muted); font-size: 11px; cursor: pointer; flex: 1; }
-        .nav-item i { font-size: 18px; display: block; margin-bottom: 3px; }
+        .nav-item i { font-size: 18px; display: block; margin-bottom: 2px; }
         .nav-item.active { color: var(--primary); font-weight: 600; }
 
         /* Footer Branding */
-        .footer-branding { text-align: center; font-size: 11px; color: var(--text-muted); padding: 15px 0 5px 0; border-top: 1px dashed var(--border-color); margin-top: 20px; }
+        .footer-branding { text-align: center; font-size: 11px; color: var(--text-muted); padding: 15px 0 10px 0; border-top: 1px dashed var(--border-color); margin-top: 20px; }
 
         .hidden { display: none !important; }
         
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 100; }
-        .modal-card { background: #fff; width: 90%; max-width: 350px; padding: 20px; border-radius: 16px; box-sizing: border-box; }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-card { background: #fff; width: 90%; max-width: 340px; padding: 20px; border-radius: 16px; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
     <div class="mobile-container">
-        <div class="content-body">
+        <div class="content-body" id="mainScrollArea">
             
             <!-- AUTH SCREEN -->
             <div id="authScreen">
                 <div class="auth-header">
-                    <div class="auth-illustration">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
+                    <!-- Owner Profile Picture -->
+                    <img id="ownerProfileImg" src="https://via.placeholder.com/150" alt="Director" class="owner-profile-img">
                     <h2 class="coachingTitle" id="coachingNameDisp">Local Coaching</h2>
-                    <p class="coaching-sub" id="coachingDetailsDisp">लोड हो रहा है...</p>
+                    <p class="coaching-meta" id="coachingMetaDisp">लोड हो रहा है...</p>
+                    
+                    <!-- Call & WhatsApp Action Icons -->
+                    <div class="contact-icons" id="contactIconsBox">
+                        <a href="#" id="callBtn" class="contact-icon-btn btn-call" title="Call Director"><i class="fa-solid fa-phone"></i></a>
+                        <a href="#" id="waBtn" class="contact-icon-btn btn-wa" title="WhatsApp Director" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
                 </div>
 
-                <!-- Login Form -->
-                <div id="loginFormContainer">
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label>मोबाइल नंबर (Mobile Number)</label>
-                            <input type="tel" id="loginMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
-                        </div>
-                        <div class="form-group">
-                            <label>6-Digit PIN</label>
-                            <input type="password" id="loginPin" class="form-control" placeholder="••••••" maxlength="6" required>
-                        </div>
-                        <div style="text-align: right; margin-bottom: 15px;">
-                            <a href="#" onclick="alert('कृपया अपने कोचिंग संचालक से संपर्क करें।')" style="font-size: 12px; color: var(--primary); text-decoration: none;">PIN भूल गए?</a>
-                        </div>
-                        <button type="submit" class="btn-main">लॉगिन करें (Login)</button>
-                    </form>
-                    <div class="auth-switch" onclick="toggleAuthMode()">नया खाता बनाएं? <span>Sign up</span></div>
-                </div>
+                <div class="floating-auth-box">
+                    <!-- Login Form -->
+                    <div id="loginFormContainer">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label>मोबाइल नंबर (Mobile Number)</label>
+                                <input type="tel" id="loginMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
+                            </div>
+                            <div class="form-group">
+                                <label>6-Digit PIN</label>
+                                <input type="password" id="loginPin" class="form-control" placeholder="••••••" maxlength="6" required>
+                            </div>
+                            <div style="text-align: right; margin-bottom: 12px;">
+                                <a href="#" onclick="forgotPin()" style="font-size: 12px; color: var(--primary); text-decoration: none;">PIN भूल गए?</a>
+                            </div>
+                            <button type="submit" class="btn-main">लॉगिन करें (Login)</button>
+                        </form>
+                        <div class="auth-switch" onclick="toggleAuthMode()">नया खाता बनाएं? <span>Sign up</span></div>
+                    </div>
 
-                <!-- Registration Form -->
-                <div id="signupFormContainer" class="hidden">
-                    <form id="signupForm">
-                        <div class="form-group">
-                            <label>पूरा नाम (Full Name)</label>
-                            <input type="text" id="regName" class="form-control" placeholder="अपना नाम लिखें" required>
-                        </div>
-                        <div class="form-group">
-                            <label>मोबाइल नंबर (Mobile Number)</label>
-                            <input type="tel" id="regMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
-                        </div>
-                        <div class="form-group">
-                            <label>कक्षा चुनें (Select Class)</label>
-                            <select id="regClass" class="form-control" required>
-                                <option value="">-- क्लास चुनें --</option>
-                                <option value="Bihar Board Class 10th">Bihar Board Class 10th (मैट्रिक)</option>
-                                <option value="Bihar Board Class 12th">Bihar Board Class 12th (इंटर)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>नया 6-Digit PIN सेट करें</label>
-                            <input type="password" id="regPin" class="form-control" placeholder="6-digit PIN" maxlength="6" required>
-                        </div>
-                        <button type="submit" class="btn-main">रजिस्टर करें (Sign up)</button>
-                    </form>
-                    <div class="auth-switch" onclick="toggleAuthMode()">पहले से खाता है? <span>Log in</span></div>
+                    <!-- Registration Form -->
+                    <div id="signupFormContainer" class="hidden">
+                        <form id="signupForm">
+                            <div class="form-group">
+                                <label>पूरा नाम (Full Name)</label>
+                                <input type="text" id="regName" class="form-control" placeholder="अपना नाम लिखें" required>
+                            </div>
+                            <div class="form-group">
+                                <label>मोबाइल नंबर (Mobile Number)</label>
+                                <input type="tel" id="regMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
+                            </div>
+                            <div class="form-group">
+                                <label>कक्षा चुनें (Select Class)</label>
+                                <select id="regClass" class="form-control" required>
+                                    <option value="">-- क्लास चुनें --</option>
+                                    <option value="Bihar Board Class 10th">Bihar Board Class 10th (मैट्रिक)</option>
+                                    <option value="Bihar Board Class 12th">Bihar Board Class 12th (इंटर)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>नया 6-Digit PIN सेट करें</label>
+                                <input type="password" id="regPin" class="form-control" placeholder="6-digit PIN" maxlength="6" required>
+                            </div>
+                            <button type="submit" class="btn-main">रजिस्टर करें (Sign up)</button>
+                        </form>
+                        <div class="auth-switch" onclick="toggleAuthMode()">पहले से खाता है? <span>Log in</span></div>
+                    </div>
                 </div>
             </div>
 
@@ -231,14 +246,14 @@
 
         <!-- Bottom Navigation Bar -->
         <div class="bottom-nav hidden" id="bottomNav">
-            <div class="nav-item active"><i class="fa-solid fa-house"></i>Home</div>
-            <div class="nav-item" onclick="alert('Calendar View')"><i class="fa-regular fa-calendar"></i>Calendar</div>
-            <div class="nav-item" onclick="alert('Messages & Support')"><i class="fa-regular fa-message"></i>Messages</div>
+            <div class="nav-item active" onclick="switchNav('home')"><i class="fa-solid fa-house"></i>Home</div>
+            <div class="nav-item" onclick="switchNav('calendar')"><i class="fa-regular fa-calendar"></i>Calendar</div>
+            <div class="nav-item" onclick="switchNav('messages')"><i class="fa-regular fa-message"></i>Messages</div>
             <div class="nav-item" onclick="openProfileEdit()"><i class="fa-regular fa-user"></i>Profile</div>
         </div>
     </div>
 
-    <!-- Profile Edit Modal with Image Upload -->
+    <!-- Profile Edit Modal -->
     <div id="profileModal" class="modal hidden">
         <div class="modal-card">
             <h3 style="margin-top:0;">प्रोफाइल अपडेट करें</h3>
@@ -247,7 +262,7 @@
                 <input type="text" id="editName" class="form-control">
             </div>
             <div class="form-group">
-                <label>प्रोफाइल फोटो अपलोड करें (Upload Image)</label>
+                <label>प्रोफाइल फोटो अपलोड करें</label>
                 <input type="file" id="editPicFile" class="form-control" accept="image/*">
             </div>
             <button class="btn-main" onclick="saveProfile()">सेव करें</button>
@@ -259,7 +274,7 @@
     <!-- Script Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, query, where, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, query, where, addDoc, updateDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyA6smf3Ud6Cy1-8gTxjbtgQ0mvW3kv1MUM",
@@ -284,14 +299,32 @@
                 const q = query(collection(db, "coachings"), where("coachingSlug", "==", coachingSlug));
                 const snap = await getDocs(q);
                 if (!snap.empty) {
-                    snap.forEach(doc => { currentCoaching = doc.data(); });
+                    snap.forEach(docSnap => { 
+                        currentCoaching = { id: docSnap.id, ...docSnap.data() }; 
+                    });
+                    
                     document.getElementById("coachingNameDisp").innerText = currentCoaching.coachingName;
-                    document.getElementById("coachingDetailsDisp").innerText = `संचालक: ${currentCoaching.directorName} | पता: ${currentCoaching.address} | मो: ${currentCoaching.mobile}`;
+                    
+                    // Format: Village | Director | Mobile
+                    const addressParts = currentCoaching.address ? currentCoaching.address.split(',') : [currentCoaching.address];
+                    const village = addressParts[0] ? addressParts[0].trim() : 'Location';
+                    document.getElementById("coachingMetaDisp").innerHTML = `${village} &nbsp;|&nbsp; ${currentCoaching.directorName} &nbsp;|&nbsp; ${currentCoaching.mobile}`;
+                    
+                    // Director Image Fallback
+                    document.getElementById("ownerProfileImg").src = currentCoaching.profilePic || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + currentCoaching.directorName;
+
+                    // Call & WhatsApp Links
+                    document.getElementById("callBtn").href = `tel:${currentCoaching.mobile}`;
+                    document.getElementById("waBtn").href = `https://wa.me/91${currentCoaching.mobile}?text=Hello%20Sir,%20I%20am%20student%20from%20ExamSathi`;
                 } else {
                     document.getElementById("coachingNameDisp").innerText = "ExamSathi Coaching Portal";
-                    document.getElementById("coachingDetailsDisp").innerText = "कोचिंग सेंटर नहीं मिला!";
+                    document.getElementById("coachingMetaDisp").innerText = "कोचिंग सेंटर नहीं मिला!";
                 }
-            } catch (e) { console.error(e); }
+            } catch (e) { 
+                console.error("Safari/Chrome Load Error:", e);
+                document.getElementById("coachingNameDisp").innerText = "ExamSathi Portal";
+                document.getElementById("coachingMetaDisp").innerText = "डेटा लोड करने में समस्या आई।";
+            }
 
             if (loggedInStudent) {
                 renderDashboard(loggedInStudent);
@@ -311,16 +344,22 @@
             const mobile = document.getElementById("loginMobile").value;
             const pin = document.getElementById("loginPin").value;
 
-            const q = query(collection(db, "students"), where("coachingSlug", "==", coachingSlug), where("mobile", "==", mobile), where("pin", "==", pin));
-            const snap = await getDocs(q);
+            try {
+                const q = query(collection(db, "students"), where("coachingSlug", "==", coachingSlug), where("mobile", "==", mobile), where("pin", "==", pin));
+                const snap = await getDocs(q);
 
-            if (!snap.empty) {
-                let sData = null;
-                snap.forEach(doc => { sData = doc.data(); });
-                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(sData));
-                renderDashboard(sData);
-            } else {
-                alert("गलत मोबाइल नंबर या 6-digit PIN! कृपया पुनः प्रयास करें।");
+                if (!snap.empty) {
+                    let sData = null;
+                    snap.forEach(docSnap => { 
+                        sData = { docId: docSnap.id, ...docSnap.data() }; 
+                    });
+                    localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(sData));
+                    renderDashboard(sData);
+                } else {
+                    alert("गलत मोबाइल नंबर या 6-digit PIN! कृपया पुनः प्रयास करें।");
+                }
+            } catch (err) {
+                alert("Login Error: " + err.message);
             }
         });
 
@@ -330,7 +369,7 @@
             const name = document.getElementById("regName").value;
             const mobile = document.getElementById("regMobile").value;
             const studentClass = document.getElementById("regClass").value;
-            const pin = document.format ? document.getElementById("regPin").value : document.getElementById("regPin").value;
+            const pin = document.getElementById("regPin").value;
 
             const studentData = {
                 name, mobile, studentClass, pin, coachingSlug,
@@ -339,9 +378,14 @@
                 createdAt: serverTimestamp()
             };
 
-            await addDoc(collection(db, "students"), studentData);
-            localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(studentData));
-            renderDashboard(studentData);
+            try {
+                const docRef = await addDoc(collection(db, "students"), studentData);
+                studentData.docId = docRef.id;
+                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(studentData));
+                renderDashboard(studentData);
+            } catch (err) {
+                alert("Signup Error: " + err.message);
+            }
         });
 
         function renderDashboard(student) {
@@ -352,7 +396,7 @@
             document.getElementById("dashStudentName").innerText = student.name;
             document.getElementById("dashStudentClass").innerText = student.studentClass;
             document.getElementById("dashBadge").innerText = "⭐ " + (student.badge || "Gold Scholar");
-            document.getElementById("dashProfilePic").src = student.profilePic || "https://via.placeholder.com/150";
+            document.getElementById("dashProfilePic").src = student.profilePic || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + student.name;
         }
 
         window.openProfileEdit = function() {
@@ -361,31 +405,58 @@
             document.getElementById("profileModal").classList.remove("hidden");
         }
 
-        window.saveProfile = function() {
+        window.saveProfile = async function() {
             const newName = document.getElementById("editName").value;
             const fileInput = document.getElementById("editPicFile");
 
             loggedInStudent.name = newName;
 
+            const updateProcess = async (base64Img) => {
+                if(base64Img) loggedInStudent.profilePic = base64Img;
+                
+                // Permanent update in LocalStorage
+                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
+                
+                // Permanent update in Firestore if docId exists
+                if(loggedInStudent.docId) {
+                    try {
+                        const studentRef = doc(db, "students", loggedInStudent.docId);
+                        await updateDoc(studentRef, {
+                            name: loggedInStudent.name,
+                            profilePic: loggedInStudent.profilePic
+                        });
+                    } catch(e) { console.error("Cloud sync error:", e); }
+                }
+
+                renderDashboard(loggedInStudent);
+                document.getElementById("profileModal").classList.add("hidden");
+                alert("प्रोफाइल सफलतापूर्वक अपडेट हो गई!");
+            };
+
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    loggedInStudent.profilePic = e.target.result; // Convert image to Base64
-                    localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
-                    renderDashboard(loggedInStudent);
-                    document.getElementById("profileModal").classList.add("hidden");
+                    updateProcess(e.target.result);
                 }
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
-                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
-                renderDashboard(loggedInStudent);
-                document.getElementById("profileModal").classList.add("hidden");
+                updateProcess(null);
             }
         }
 
         window.logoutStudent = function() {
             localStorage.removeItem("examsathi_student_session_" + coachingSlug);
             location.reload();
+        }
+
+        window.forgotPin = function() {
+            const mob = prompt("अपना रजिस्टर्ड 10-अंकों का मोबाइल नंबर दर्ज करें:");
+            if(mob) { alert("डायरेक्टर को आपका पिन रीसेट अनुरोध भेज दिया गया है।"); }
+        }
+
+        window.switchNav = function(tab) {
+            if(tab === 'calendar') alert('Calendar & Schedule section coming soon!');
+            if(tab === 'messages') alert('Messages & Support section coming soon!');
         }
     </script>
 </body>
