@@ -46,19 +46,25 @@
             .mobile-container { min-height: 850px; border-radius: 35px; border: 8px solid #1e293b; margin: 20px 0; }
         }
 
-        .content-body { flex: 1; padding: 20px; padding-bottom: 110px; overflow-y: auto; }
+        .content-body { flex: 1; padding-bottom: 110px; overflow-y: auto; }
 
-        /* Coaching Header Style */
-        .auth-header { text-align: center; margin-top: 10px; }
-        .owner-profile-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin: 0 auto 12px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .coaching-title { font-size: 20px; font-weight: 700; color: var(--text-main); margin: 0 0 6px 0; }
-        .coaching-meta { font-size: 13px; color: var(--text-muted); margin: 0 0 20px 0; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .contact-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .contact-icon-btn { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        /* Banner & Header Styles */
+        .banner-container { width: 100%; height: 160px; overflow: hidden; position: relative; background: #e0e0e0; }
+        .banner-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .auth-header { text-align: center; padding: 15px 20px; background: #fff; }
+        .coaching-title { font-size: 19px; font-weight: 700; color: var(--text-main); margin: 0 0 6px 0; }
+        .owner-name { font-size: 15px; font-weight: 700; color: var(--primary); text-transform: uppercase; margin: 0 0 4px 0; letter-spacing: 0.5px; }
+        .village-name { font-size: 13px; color: var(--text-muted); margin: 0 0 14px 0; }
+
+        .contact-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+        .contact-icon-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.2s; }
+        .contact-icon-btn:hover { transform: scale(1.05); }
         .btn-call { background: var(--call); }
         .btn-wa { background: var(--whatsapp); }
 
         /* Form Styles */
+        .floating-auth-box { padding: 0 20px 20px 20px; }
         .form-group { margin-bottom: 14px; text-align: left; }
         .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
         .form-control { width: 100%; padding: 11px 14px; box-sizing: border-box; border: 1px solid var(--border-color); border-radius: 10px; font-size: 14px; background: #fafafa; }
@@ -69,10 +75,8 @@
         .auth-switch { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
         .auth-switch span { color: var(--primary); font-weight: 600; }
 
-        /* Floating Input Bar for Mobile Keyboards */
-        .floating-auth-box { background: #fff; padding: 15px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-
         /* Dashboard Styles */
+        .dashboard-wrapper { padding: 20px; }
         .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .user-info h2 { margin: 0; font-size: 18px; font-weight: 700; }
         .user-info small { font-size: 12px; color: var(--text-muted); display: block; margin-top: 2px; }
@@ -99,7 +103,7 @@
         .event-details h4 { margin: 0 0 3px 0; font-size: 13px; }
         .event-details p { margin: 0; font-size: 11px; color: var(--text-muted); }
 
-        /* Bottom Nav fixed for Chrome & Safari */
+        /* Bottom Nav fixed */
         .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: #fff; border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 10px 0 env(safe-area-inset-bottom, 10px) 0; box-sizing: border-box; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
         .nav-item { text-align: center; color: var(--text-muted); font-size: 11px; cursor: pointer; flex: 1; }
         .nav-item i { font-size: 18px; display: block; margin-bottom: 2px; }
@@ -121,14 +125,18 @@
             
             <!-- AUTH SCREEN -->
             <div id="authScreen">
+                <!-- Banner Image -->
+                <div class="banner-container">
+                    <img id="bannerImg" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Coaching Banner">
+                </div>
+
                 <div class="auth-header">
-                    <!-- Owner Profile Picture -->
-                    <img id="ownerProfileImg" src="https://via.placeholder.com/150" alt="Director" class="owner-profile-img">
                     <h2 class="coachingTitle" id="coachingNameDisp">Local Coaching</h2>
-                    <p class="coaching-meta" id="coachingMetaDisp">लोड हो रहा है...</p>
+                    <h3 class="owner-name" id="ownerNameDisp">SANJAY KUMAR</h3>
+                    <p class="village-name" id="villageNameDisp">Vill-Madhuvan</p>
                     
                     <!-- Call & WhatsApp Action Icons -->
-                    <div class="contact-icons" id="contactIconsBox">
+                    <div class="contact-icons">
                         <a href="#" id="callBtn" class="contact-icon-btn btn-call" title="Call Director"><i class="fa-solid fa-phone"></i></a>
                         <a href="#" id="waBtn" class="contact-icon-btn btn-wa" title="WhatsApp Director" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
@@ -186,53 +194,55 @@
 
             <!-- DASHBOARD SCREEN -->
             <div id="dashboardScreen" class="hidden">
-                <div class="dash-header">
-                    <div class="user-info">
-                        <h2 id="dashStudentName">Student Name</h2>
-                        <small id="dashStudentClass">Class 10th</small>
-                        <span class="badge-pill" id="dashBadge">⭐ Gold Scholar</span>
+                <div class="dashboard-wrapper">
+                    <div class="dash-header">
+                        <div class="user-info">
+                            <h2 id="dashStudentName">Student Name</h2>
+                            <small id="dashStudentClass">Class 10th</small>
+                            <span class="badge-pill" id="dashBadge">⭐ Gold Scholar</span>
+                        </div>
+                        <div class="profile-img-container" onclick="openProfileEdit()" title="Profile Edit">
+                            <img id="dashProfilePic" src="https://via.placeholder.com/150" alt="Profile">
+                        </div>
                     </div>
-                    <div class="profile-img-container" onclick="openProfileEdit()" title="Profile Edit">
-                        <img id="dashProfilePic" src="https://via.placeholder.com/150" alt="Profile">
-                    </div>
-                </div>
 
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search anything (Books, Tests, Notes)...">
-                </div>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search anything (Books, Tests, Notes)...">
+                    </div>
 
-                <div class="section-title">Quick Access</div>
-                <div class="quick-grid">
-                    <div class="quick-card" onclick="alert('सभी पुस्तकें लोड हो रही हैं...')">
-                        <i class="fa-solid fa-book-open"></i>
-                        <h5>All Books</h5>
+                    <div class="section-title">Quick Access</div>
+                    <div class="quick-grid">
+                        <div class="quick-card" onclick="alert('सभी पुस्तकें लोड हो रही हैं...')">
+                            <i class="fa-solid fa-book-open"></i>
+                            <h5>All Books</h5>
+                        </div>
+                        <div class="quick-card" onclick="alert('टेस्ट और क्विज़ सेक्शन खुलेगा')">
+                            <i class="fa-solid fa-file-pen"></i>
+                            <h5>Test & Quiz</h5>
+                        </div>
+                        <div class="quick-card" onclick="alert('रिपोर्ट कार्ड: आपने 3 टेस्ट दिए हैं, औसत स्कोर 85% है।')">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <h5>Report Card</h5>
+                        </div>
                     </div>
-                    <div class="quick-card" onclick="alert('टेस्ट और क्विज़ सेक्शन खुलेगा')">
-                        <i class="fa-solid fa-file-pen"></i>
-                        <h5>Test & Quiz</h5>
-                    </div>
-                    <div class="quick-card" onclick="alert('रिपोर्ट कार्ड: आपने 3 टेस्ट दिए हैं, औसत स्कोर 85% है।')">
-                        <i class="fa-solid fa-chart-pie"></i>
-                        <h5>Report Card</h5>
-                    </div>
-                </div>
 
-                <div class="section-title">Upcoming Events <span>View Calendar</span></div>
-                <div class="event-card">
-                    <div class="event-date">MAY<br><span style="font-size:16px;">24</span></div>
-                    <div class="event-details">
-                        <h4>Bihar Board Mock Test</h4>
-                        <p><i class="fa-regular fa-clock"></i> 10:00 AM - 01:00 PM</p>
-                        <p><i class="fa-solid fa-location-dot"></i> Coaching Hall</p>
+                    <div class="section-title">Upcoming Events <span>View Calendar</span></div>
+                    <div class="event-card">
+                        <div class="event-date">MAY<br><span style="font-size:16px;">24</span></div>
+                        <div class="event-details">
+                            <h4>Bihar Board Mock Test</h4>
+                            <p><i class="fa-regular fa-clock"></i> 10:00 AM - 01:00 PM</p>
+                            <p><i class="fa-solid fa-location-dot"></i> Coaching Hall</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-date">MAY<br><span style="font-size:16px;">28</span></div>
-                    <div class="event-details">
-                        <h4>Parent-Teacher Meeting</h4>
-                        <p><i class="fa-regular fa-clock"></i> 02:00 PM - 04:00 PM</p>
-                        <p><i class="fa-solid fa-location-dot"></i> Room 204</p>
+                    <div class="event-card">
+                        <div class="event-date">MAY<br><span style="font-size:16px;">28</span></div>
+                        <div class="event-details">
+                            <h4>Parent-Teacher Meeting</h4>
+                            <p><i class="fa-regular fa-clock"></i> 02:00 PM - 04:00 PM</p>
+                            <p><i class="fa-solid fa-location-dot"></i> Room 204</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -304,26 +314,25 @@
                     });
                     
                     document.getElementById("coachingNameDisp").innerText = currentCoaching.coachingName;
+                    document.getElementById("ownerNameDisp").innerText = currentCoaching.directorName.toUpperCase();
                     
-                    // Format: Village | Director | Mobile
                     const addressParts = currentCoaching.address ? currentCoaching.address.split(',') : [currentCoaching.address];
                     const village = addressParts[0] ? addressParts[0].trim() : 'Location';
-                    document.getElementById("coachingMetaDisp").innerHTML = `${village} &nbsp;|&nbsp; ${currentCoaching.directorName} &nbsp;|&nbsp; ${currentCoaching.mobile}`;
+                    document.getElementById("villageNameDisp").innerText = village;
                     
-                    // Director Image Fallback
-                    document.getElementById("ownerProfileImg").src = currentCoaching.profilePic || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + currentCoaching.directorName;
+                    if(currentCoaching.bannerPic) {
+                        document.getElementById("bannerImg").src = currentCoaching.bannerPic;
+                    }
 
-                    // Call & WhatsApp Links
                     document.getElementById("callBtn").href = `tel:${currentCoaching.mobile}`;
                     document.getElementById("waBtn").href = `https://wa.me/91${currentCoaching.mobile}?text=Hello%20Sir,%20I%20am%20student%20from%20ExamSathi`;
                 } else {
                     document.getElementById("coachingNameDisp").innerText = "ExamSathi Coaching Portal";
-                    document.getElementById("coachingMetaDisp").innerText = "कोचिंग सेंटर नहीं मिला!";
+                    document.getElementById("ownerNameDisp").innerText = "DIRECTOR";
+                    document.getElementById("villageNameDisp").innerText = "Madhuvan";
                 }
             } catch (e) { 
-                console.error("Safari/Chrome Load Error:", e);
-                document.getElementById("coachingNameDisp").innerText = "ExamSathi Portal";
-                document.getElementById("coachingMetaDisp").innerText = "डेटा लोड करने में समस्या आई।";
+                console.error("Load Error:", e);
             }
 
             if (loggedInStudent) {
@@ -338,7 +347,6 @@
             document.getElementById("signupFormContainer").classList.toggle("hidden");
         }
 
-        // Login Handler
         document.getElementById("loginForm").addEventListener("submit", async (e) => {
             e.preventDefault();
             const mobile = document.getElementById("loginMobile").value;
@@ -363,7 +371,6 @@
             }
         });
 
-        // Signup Handler
         document.getElementById("signupForm").addEventListener("submit", async (e) => {
             e.preventDefault();
             const name = document.getElementById("regName").value;
@@ -414,10 +421,8 @@
             const updateProcess = async (base64Img) => {
                 if(base64Img) loggedInStudent.profilePic = base64Img;
                 
-                // Permanent update in LocalStorage
                 localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
                 
-                // Permanent update in Firestore if docId exists
                 if(loggedInStudent.docId) {
                     try {
                         const studentRef = doc(db, "students", loggedInStudent.docId);
