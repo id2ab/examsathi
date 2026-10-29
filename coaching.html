@@ -10,7 +10,7 @@
         :root {
             --primary: #2e7d32;
             --primary-dark: #1b5e20;
-            --bg-color: #f4f6f8;
+            --bg-color: #e2e8f0;
             --card-bg: #ffffff;
             --text-main: #1f2937;
             --text-muted: #6b7280;
@@ -36,30 +36,59 @@
             max-width: 430px;
             background: var(--card-bg);
             min-height: 100vh;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             position: relative;
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
         }
         @media(min-width: 434px) {
-            .mobile-container { min-height: 850px; border-radius: 35px; border: 8px solid #1e293b; margin: 20px 0; }
+            .mobile-container { min-height: 90vh; border-radius: 30px; border: 8px solid #1e293b; margin: 20px 0; overflow: hidden; }
         }
 
-        .content-body { flex: 1; padding-bottom: 110px; overflow-y: auto; }
+        .content-body { flex: 1; padding-bottom: 90px; overflow-y: auto; }
 
-        /* Banner & Header Styles */
-        .banner-container { width: 100%; height: 160px; overflow: hidden; position: relative; background: #e0e0e0; }
-        .banner-container img { width: 100%; height: 100%; object-fit: cover; }
+        /* Banner & Floating Coaching Title */
+        .banner-container { width: 100%; height: 180px; position: relative; background: #333; }
+        .banner-container img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
         
-        .auth-header { text-align: center; padding: 15px 20px; background: #fff; }
-        .coaching-title { font-size: 19px; font-weight: 700; color: var(--text-main); margin: 0 0 6px 0; }
-        .owner-name { font-size: 15px; font-weight: 700; color: var(--primary); text-transform: uppercase; margin: 0 0 4px 0; letter-spacing: 0.5px; }
-        .village-name { font-size: 13px; color: var(--text-muted); margin: 0 0 14px 0; }
+        .floating-coaching-title {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 700;
+            white-space: nowrap;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            letter-spacing: 0.3px;
+        }
 
-        .contact-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
-        .contact-icon-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.2s; }
-        .contact-icon-btn:hover { transform: scale(1.05); }
+        /* Header Layout with extra bottom space */
+        .auth-header { 
+            padding: 18px 20px 20px 20px; 
+            background: #fff; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 15px; /* Yahan space badha diya gaya hai */
+        }
+        .header-left { text-align: left; }
+        .owner-name { font-size: 17px; font-weight: 700; color: #1e3a2f; text-transform: uppercase; margin: 0 0 2px 0; letter-spacing: 0.3px; }
+        .village-name { font-size: 13px; color: var(--text-muted); margin: 0; font-weight: 500; }
+
+        /* Call & WhatsApp Action Icons on Right Side */
+        .contact-icons { display: flex; gap: 10px; align-items: center; }
+        .contact-icon-btn { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 15px; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.15); transition: transform 0.2s; }
+        .contact-icon-btn:hover { transform: scale(1.08); }
         .btn-call { background: var(--call); }
         .btn-wa { background: var(--whatsapp); }
 
@@ -70,10 +99,10 @@
         .form-control { width: 100%; padding: 11px 14px; box-sizing: border-box; border: 1px solid var(--border-color); border-radius: 10px; font-size: 14px; background: #fafafa; }
         .form-control:focus { outline: none; border-color: var(--primary); background: #fff; }
 
-        .btn-main { width: 100%; background: var(--primary); color: white; border: none; padding: 13px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
+        .btn-main { width: 100%; background: #2b7a32; color: white; border: none; padding: 13px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
         .btn-main:hover { background: var(--primary-dark); }
         .auth-switch { text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); cursor: pointer; }
-        .auth-switch span { color: var(--primary); font-weight: 600; }
+        .auth-switch span { color: #2b7a32; font-weight: 600; }
 
         /* Dashboard Styles */
         .dashboard-wrapper { padding: 20px; }
@@ -125,17 +154,19 @@
             
             <!-- AUTH SCREEN -->
             <div id="authScreen">
-                <!-- Banner Image -->
+                <!-- Banner Image with Floating Coaching Title -->
                 <div class="banner-container">
                     <img id="bannerImg" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Coaching Banner">
+                    <div class="floating-coaching-title" id="coachingNameDisp">Local Coaching</div>
                 </div>
 
                 <div class="auth-header">
-                    <h2 class="coachingTitle" id="coachingNameDisp">Local Coaching</h2>
-                    <h3 class="owner-name" id="ownerNameDisp">SANJAY KUMAR</h3>
-                    <p class="village-name" id="villageNameDisp">Vill-Madhuvan</p>
+                    <div class="header-left">
+                        <h3 class="owner-name" id="ownerNameDisp">SANJAY KUMAR</h3>
+                        <p class="village-name" id="villageNameDisp">Madhuban</p>
+                    </div>
                     
-                    <!-- Call & WhatsApp Action Icons -->
+                    <!-- Call & WhatsApp Action Icons on Right Side -->
                     <div class="contact-icons">
                         <a href="#" id="callBtn" class="contact-icon-btn btn-call" title="Call Director"><i class="fa-solid fa-phone"></i></a>
                         <a href="#" id="waBtn" class="contact-icon-btn btn-wa" title="WhatsApp Director" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
@@ -317,7 +348,7 @@
                     document.getElementById("ownerNameDisp").innerText = currentCoaching.directorName.toUpperCase();
                     
                     const addressParts = currentCoaching.address ? currentCoaching.address.split(',') : [currentCoaching.address];
-                    const village = addressParts[0] ? addressParts[0].trim() : 'Location';
+                    const village = addressParts[0] ? addressParts[0].trim() : 'Madhuban';
                     document.getElementById("villageNameDisp").innerText = village;
                     
                     if(currentCoaching.bannerPic) {
@@ -327,9 +358,9 @@
                     document.getElementById("callBtn").href = `tel:${currentCoaching.mobile}`;
                     document.getElementById("waBtn").href = `https://wa.me/91${currentCoaching.mobile}?text=Hello%20Sir,%20I%20am%20student%20from%20ExamSathi`;
                 } else {
-                    document.getElementById("coachingNameDisp").innerText = "ExamSathi Coaching Portal";
-                    document.getElementById("ownerNameDisp").innerText = "DIRECTOR";
-                    document.getElementById("villageNameDisp").innerText = "Madhuvan";
+                    document.getElementById("coachingNameDisp").innerText = "Sanjay Matric Coaching Centre";
+                    document.getElementById("ownerNameDisp").innerText = "SANJAY KUMAR";
+                    document.getElementById("villageNameDisp").innerText = "Madhuban";
                 }
             } catch (e) { 
                 console.error("Load Error:", e);
