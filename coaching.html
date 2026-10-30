@@ -19,10 +19,7 @@
             --call: #0284c7;
         }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -36,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* Responsive Container: Mobile पर 100% width, PC & Tablet पर फुल-विड्थ मॉडर्न वेब लेआउट */
         .mobile-container {
             width: 100%;
             max-width: 100%;
@@ -62,9 +58,7 @@
         }
 
         @media (min-width: 1024px) {
-            .mobile-container {
-                max-width: 1050px;
-            }
+            .mobile-container { max-width: 1050px; }
         }
 
         .content-body {
@@ -75,7 +69,6 @@
             justify-content: space-between;
         }
 
-        /* Banner & Floating Coaching Title */
         .banner-container {
             width: 100%;
             height: 220px;
@@ -83,14 +76,8 @@
             background: #111;
             flex-shrink: 0;
         }
-        @media (min-width: 768px) {
-            .banner-container { height: 280px; }
-        }
-        .banner-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        @media (min-width: 768px) { .banner-container { height: 280px; } }
+        .banner-container img { width: 100%; height: 100%; object-fit: cover; }
         
         .floating-coaching-title {
             position: absolute;
@@ -113,7 +100,6 @@
             text-align: center;
         }
 
-        /* Director & Village Bar */
         .auth-header { 
             padding: 20px 25px; 
             background: #fff; 
@@ -123,10 +109,7 @@
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 20px;
         }
-        .header-left {
-            text-align: left;
-            padding-right: 15px;
-        }
+        .header-left { text-align: left; padding-right: 15px; }
         .owner-name {
             font-size: 18px;
             font-weight: 700;
@@ -135,331 +118,151 @@
             margin: 0 0 4px 0;
             letter-spacing: 0.5px;
         }
-        .village-name {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin: 0;
-            font-weight: 500;
-        }
+        .village-name { font-size: 14px; color: var(--text-muted); margin: 0; font-weight: 500; }
 
-        /* Call & WhatsApp Action Icons */
-        .contact-icons {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-shrink: 0;
-        }
+        .contact-icons { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
         .contact-icon-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 17px;
-            text-decoration: none;
+            width: 42px; height: 42px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 17px; text-decoration: none;
             box-shadow: 0 3px 8px rgba(0,0,0,0.15);
             transition: transform 0.2s;
         }
-        .contact-icon-btn:active {
-            transform: scale(0.94);
-        }
+        .contact-icon-btn:active { transform: scale(0.94); }
         .btn-call { background: var(--call); }
         .btn-wa { background: var(--whatsapp); }
 
-        /* Form Controls & Desktop Split Layout */
-        .auth-grid-wrapper {
-            padding: 0 25px 25px 25px;
-        }
-        @media (min-width: 768px) {
-            .auth-grid-wrapper {
-                max-width: 550px;
-                margin: 0 auto;
-                width: 100%;
-            }
-        }
+        .auth-grid-wrapper { padding: 0 25px 25px 25px; }
+        @media (min-width: 768px) { .auth-grid-wrapper { max-width: 550px; margin: 0 auto; width: 100%; } }
 
-        .form-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #111827;
-        }
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #111827; }
         .form-control {
-            width: 100%;
-            padding: 13px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            font-size: 15px;
-            background: #f9fafb;
+            width: 100%; padding: 13px 16px; border: 1px solid var(--border-color);
+            border-radius: 12px; font-size: 15px; background: #f9fafb;
         }
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: #ffffff;
-        }
+        .form-control:focus { outline: none; border-color: var(--primary); background: #ffffff; }
 
         .btn-main {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: background 0.2s;
+            width: 100%; background: var(--primary); color: white; border: none;
+            padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 600;
+            cursor: pointer; margin-top: 8px; transition: background 0.2s;
         }
-        .btn-main:hover {
-            background: var(--primary-dark);
-        }
-        .auth-switch {
-            text-align: center;
-            margin-top: 18px;
-            font-size: 14px;
-            color: var(--text-muted);
-            cursor: pointer;
-        }
-        .auth-switch span {
-            color: var(--primary);
-            font-weight: 600;
-        }
+        .btn-main:hover { background: var(--primary-dark); }
+        .auth-switch { text-align: center; margin-top: 18px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
+        .auth-switch span { color: var(--primary); font-weight: 600; }
 
-        /* Student Dashboard Styles */
-        .dashboard-wrapper {
-            padding: 25px;
-        }
-        @media (min-width: 768px) {
-            .dashboard-wrapper {
-                max-width: 900px;
-                margin: 0 auto;
-                width: 100%;
-            }
-        }
+        .dashboard-wrapper { padding: 25px; }
+        @media (min-width: 768px) { .dashboard-wrapper { max-width: 900px; margin: 0 auto; width: 100%; } }
 
-        .dash-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 22px;
-        }
-        .user-info h2 {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 700;
-        }
-        .user-info small {
-            font-size: 13px;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 3px;
-        }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+        .user-info h2 { margin: 0; font-size: 22px; font-weight: 700; }
+        .user-info small { font-size: 13px; color: var(--text-muted); display: block; margin-top: 3px; }
         .badge-pill {
-            display: inline-block;
-            padding: 4px 10px;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 6px;
-            margin-top: 6px;
-            background: #fef3c7;
-            color: #d97706;
+            display: inline-block; padding: 4px 10px; font-size: 12px; font-weight: 600;
+            border-radius: 6px; margin-top: 6px; background: #fef3c7; color: #d97706;
         }
 
         .profile-img-container {
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--primary);
-            cursor: pointer;
-            background: #e5e7eb;
-            flex-shrink: 0;
+            width: 58px; height: 58px; border-radius: 50%; overflow: hidden;
+            border: 2px solid var(--primary); cursor: pointer; background: #e5e7eb; flex-shrink: 0;
         }
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        .search-box {
-            position: relative;
-            margin-bottom: 25px;
-        }
+        .search-box { position: relative; margin-bottom: 25px; }
         .search-box input {
-            width: 100%;
-            padding: 14px 18px 14px 45px;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
-            background: #f8fafc;
-            font-size: 15px;
+            width: 100%; padding: 14px 18px 14px 45px; border-radius: 14px;
+            border: 1px solid var(--border-color); background: #f8fafc; font-size: 15px;
         }
         .search-box i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 16px;
+            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); font-size: 16px;
         }
 
         .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 16px; font-weight: 700; margin-bottom: 14px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .section-title span {
-            font-size: 13px;
-            color: var(--primary);
-            cursor: pointer;
-        }
+        .section-title span { font-size: 13px; color: var(--primary); cursor: pointer; }
 
-        .quick-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
+        .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
         .quick-card {
-            background: #fdfbf7;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
+            background: #fdfbf7; border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 20px 10px; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s;
         }
-        .quick-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-        .quick-card i {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        .quick-card h5 {
-            margin: 0;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
+        .quick-card:hover { transform: translateY(-2px); border-color: var(--primary); }
+        .quick-card i { font-size: 24px; color: var(--primary); margin-bottom: 8px; }
+        .quick-card h5 { margin: 0; font-size: 13px; font-weight: 600; color: var(--text-main); }
 
         .event-card {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 15px;
-            margin-bottom: 12px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
+            background: #fff; border: 1px solid var(--border-color); border-radius: 14px;
+            padding: 15px; margin-bottom: 12px; display: flex; gap: 15px; align-items: center;
         }
         .event-date {
-            background: #e8f5e9;
-            color: var(--primary);
-            padding: 8px 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 13px;
-            line-height: 1.2;
-            flex-shrink: 0;
+            background: #e8f5e9; color: var(--primary); padding: 8px 12px; border-radius: 10px;
+            text-align: center; font-weight: 700; font-size: 13px; line-height: 1.2; flex-shrink: 0;
         }
-        .event-details h4 {
-            margin: 0 0 4px 0;
-            font-size: 14px;
-        }
-        .event-details p {
-            margin: 0;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
+        .event-details h4 { margin: 0 0 4px 0; font-size: 14px; }
+        .event-details p { margin: 0; font-size: 12px; color: var(--text-muted); }
 
-        /* Bottom Nav */
         .bottom-nav {
-            position: sticky;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #ffffff;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px)) 0;
-            z-index: 100;
+            position: sticky; bottom: 0; left: 0; width: 100%; background: #ffffff;
+            border-top: 1px solid var(--border-color); display: flex; justify-content: space-around;
+            padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px)) 0; z-index: 100;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.04);
         }
         @media (min-width: 768px) {
-            .bottom-nav {
-                max-width: 850px;
-                margin: 0 auto;
-                border-radius: 0 0 20px 20px;
-            }
+            .bottom-nav { max-width: 850px; margin: 0 auto; border-radius: 0 0 20px 20px; }
         }
-        @media (min-width: 1024px) {
-            .bottom-nav {
-                max-width: 1050px;
-            }
-        }
-        .nav-item {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 12px;
-            cursor: pointer;
-            flex: 1;
-        }
-        .nav-item i {
-            font-size: 20px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .nav-item.active {
-            color: var(--primary);
-            font-weight: 600;
-        }
+        @media (min-width: 1024px) { .bottom-nav { max-width: 1050px; } }
+        .nav-item { text-align: center; color: var(--text-muted); font-size: 12px; cursor: pointer; flex: 1; }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 4px; }
+        .nav-item.active { color: var(--primary); font-weight: 600; }
 
-        /* Footer Branding */
         .footer-branding {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
-            padding: 16px 25px 20px 25px;
-            border-top: 1px dashed var(--border-color);
-            margin-top: 20px;
+            text-align: center; font-size: 12px; color: var(--text-muted);
+            padding: 16px 25px 20px 25px; border-top: 1px dashed var(--border-color); margin-top: 20px;
         }
 
         .hidden { display: none !important; }
         
         .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 16px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.65); display: flex; justify-content: center;
+            align-items: center; z-index: 2000; padding: 16px;
         }
         .modal-card {
-            background: #fff;
-            width: 100%;
-            max-width: 380px;
-            padding: 24px;
-            border-radius: 18px;
+            background: #fff; width: 100%; max-width: 440px; padding: 24px;
+            border-radius: 18px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .set-btn {
+            background: #f3e8ff; border: 1px solid #d8b4fe; color: #6b21a8;
+            padding: 8px 4px; border-radius: 8px; font-weight: 700; font-size: 11px; cursor: pointer; text-align: center;
+        }
+        .set-btn:hover { background: #8b5cf6; color: #fff; }
+        .chapter-card {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 12px; background: #f8fafc; border: 1px solid #e2e8f0;
+            border-radius: 10px; margin-bottom: 8px;
+        }
+        .ch-btn {
+            background: #e8f5e9; border: 1px solid #a5d6a7; color: #1b5e20;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;
+        }
+        .ch-btn:hover { background: #2b7a32; color: #fff; }
+
+        .quiz-opt {
+            padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border-color);
+            background: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+            font-size: 14px; transition: all 0.2s;
+        }
+        .quiz-opt:hover { background: #f8fafc; }
+        .quiz-opt.opt-correct {
+            border-color: #16a34a !important; background: #dcfce7 !important; color: #14532d !important; font-weight: 600;
+        }
+        .quiz-opt.opt-wrong {
+            border-color: #dc2626 !important; background: #fee2e2 !important; color: #7f1d1d !important; font-weight: 600;
         }
     </style>
 </head>
@@ -563,11 +366,11 @@
                                 <i class="fa-solid fa-book-open"></i>
                                 <h5>All Books</h5>
                             </div>
-                            <div class="quick-card" onclick="alert('टेस्ट और क्विज़ सेक्शन खुलेगा')">
-                                <i class="fa-solid fa-file-pen"></i>
-                                <h5>Test & Quiz</h5>
+                            <div class="quick-card" onclick="openTestSelector()" style="border-color:#8b5cf6; background:#f5f3ff;">
+                                <i class="fa-solid fa-file-pen" style="color:#8b5cf6;"></i>
+                                <h5 style="color:#8b5cf6;">Test & Quiz</h5>
                             </div>
-                            <div class="quick-card" onclick="alert('रिपोर्ट कार्ड लोड हो रहा है...')">
+                            <div class="quick-card" onclick="openReportCardModal()">
                                 <i class="fa-solid fa-chart-pie"></i>
                                 <h5>Report Card</h5>
                             </div>
@@ -577,9 +380,9 @@
                         <div class="event-card">
                             <div class="event-date">MAY<br><span style="font-size:16px;">24</span></div>
                             <div class="event-details">
-                                <h4>Bihar Board Mock Test</h4>
+                                <h4>Bihar Board Hindi Mock Test</h4>
                                 <p><i class="fa-regular fa-clock"></i> 10:00 AM - 01:00 PM</p>
-                                <p><i class="fa-solid fa-location-dot"></i> Coaching Hall</p>
+                                <p><i class="fa-solid fa-location-dot"></i> Live Online Portal</p>
                             </div>
                         </div>
                         <div class="event-card">
@@ -610,7 +413,121 @@
         </div>
     </div>
 
-    <!-- Profile Edit Modal -->
+    <!-- MODAL 1: TEST SELECTOR MODAL -->
+    <div id="testSelectModal" class="modal hidden">
+        <div class="modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+                <h3 style="margin:0; font-size:16px; color:#1e293b;"><i class="fa-solid fa-list-check" style="color:#8b5cf6;"></i> टेस्ट व क्विज़ चुनें</h3>
+                <span onclick="closeModal('testSelectModal')" style="font-size:22px; cursor:pointer; color:#64748b;">&times;</span>
+            </div>
+
+            <!-- Full Syllabus Mock Test (100 Questions) -->
+            <div style="margin-bottom:18px;">
+                <h4 style="margin:0 0 10px 0; color:#8b5cf6; font-size:13px;">🏆 संपूर्ण पाठ्यक्रम मॉक टेस्ट (100 MCQs | 90 Min)</h4>
+                <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:6px;">
+                    <button onclick="startQuiz('mock', 0, 1)" class="set-btn">Set 1</button>
+                    <button onclick="startQuiz('mock', 0, 2)" class="set-btn">Set 2</button>
+                    <button onclick="startQuiz('mock', 0, 3)" class="set-btn">Set 3</button>
+                    <button onclick="startQuiz('mock', 0, 4)" class="set-btn">Set 4</button>
+                    <button onclick="startQuiz('mock', 0, 5)" class="set-btn">Set 5</button>
+                    <button onclick="startQuiz('mock', 0, 6)" class="set-btn">Set 6</button>
+                    <button onclick="startQuiz('mock', 0, 7)" class="set-btn">Set 7</button>
+                    <button onclick="startQuiz('mock', 0, 8)" class="set-btn">Set 8</button>
+                    <button onclick="startQuiz('mock', 0, 9)" class="set-btn">Set 9</button>
+                    <button onclick="startQuiz('mock', 0, 10)" class="set-btn">Set 10</button>
+                </div>
+            </div>
+
+            <!-- Chapter-wise 25 MCQ Sets -->
+            <div>
+                <h4 style="margin:0 0 10px 0; color:var(--primary); font-size:13px;">📖 अध्यायवार टेस्ट (25-25 MCQs | 20 Min)</h4>
+                <div id="chapterListContainer" style="max-height: 250px; overflow-y: auto;">
+                    <!-- Chapters injected dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: QUIZ PLAYER MODAL -->
+    <div id="quizPlayerModal" class="modal hidden">
+        <div class="modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:14px;">
+                <div>
+                    <h4 id="quizTitleDisplay" style="margin:0; font-size:15px; color:#1e293b;">हिंदी टेस्ट</h4>
+                    <small id="quizMetaDisplay" style="color:#64748b; font-size:11px;">25 प्रश्न | 20 मिनट</small>
+                </div>
+                <div id="quizTimer" style="background:#fef3c7; color:#b45309; padding:5px 10px; border-radius:10px; font-weight:700; font-size:13px;">
+                    ⏱️ 20:00
+                </div>
+            </div>
+
+            <!-- Question Area -->
+            <div id="quizQuestionBody">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <span id="questionCounter" style="font-size:12px; font-weight:700; color:#8b5cf6;">प्रश्न 1 of 25</span>
+                    <span id="answeredStatus" style="font-size:11px; color:#64748b;">उत्तर दें</span>
+                </div>
+                <p id="questionContent" style="font-size:15px; font-weight:600; color:#1e293b; line-height:1.5; margin-bottom:16px;">
+                    प्रश्न लोड हो रहा है...
+                </p>
+                <div id="optionsContainer" style="display:flex; flex-direction:column; gap:9px;">
+                    <!-- Options with Instant Feedback -->
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div style="display:flex; justify-content:space-between; margin-top:20px; gap:10px;">
+                <button id="quizPrevBtn" onclick="prevQuizQuestion()" style="flex:1; padding:10px; border-radius:10px; border:1px solid #cbd5e1; background:#f8fafc; font-weight:600; cursor:pointer;">पिछला</button>
+                <button id="quizNextBtn" onclick="nextQuizQuestion()" style="flex:1; padding:10px; border-radius:10px; border:none; background:#8b5cf6; color:white; font-weight:600; cursor:pointer;">अगला</button>
+                <button id="quizSubmitBtn" onclick="confirmSubmitQuiz()" style="display:none; flex:1; padding:10px; border-radius:10px; border:none; background:var(--primary); color:white; font-weight:600; cursor:pointer;">सबमिट करें</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: SUBMISSION RESULT MODAL -->
+    <div id="resultModal" class="modal hidden">
+        <div class="modal-card" style="text-align: center;">
+            <div style="font-size: 45px; margin-bottom: 8px;" id="resultEmoji">🎉</div>
+            <h3 style="margin: 0 0 5px 0;" id="resultTitle">क्विज़ पूरा हुआ!</h3>
+            <p style="color: var(--text-muted); font-size: 13px; margin: 0 0 15px 0;" id="resultSubtitle">आपका परिणाम डेटाबेस में सुरक्षित कर लिया गया है:</p>
+
+            <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 18px;">
+                <div style="font-size: 32px; font-weight: 800; color: #8b5cf6;" id="scoreDisplay">0 / 0</div>
+                <div style="font-size: 14px; font-weight: 600; color: #475569; margin-top: 4px;" id="percentDisplay">0% अंक</div>
+                <div style="margin-top: 8px;">
+                    <span id="newBadgeAward" class="badge-pill" style="font-size: 12px; padding: 4px 12px;">⭐ Bronze Scholar</span>
+                </div>
+            </div>
+
+            <button class="btn-main" onclick="closeModal('resultModal'); openReportCardModal();" style="margin-bottom: 8px;">📊 रिपोर्ट कार्ड देखें</button>
+            <button class="btn-main" style="background:#64748b;" onclick="closeModal('resultModal')">होम पर जाएं</button>
+        </div>
+    </div>
+
+    <!-- MODAL 4: COMPLETE REPORT CARD MODAL -->
+    <div id="reportCardModal" class="modal hidden">
+        <div class="modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+                <h3 style="margin:0; font-size:16px; color:#1e293b;"><i class="fa-solid fa-chart-pie" style="color:var(--primary);"></i> छात्र रिपोर्ट कार्ड</h3>
+                <span onclick="closeModal('reportCardModal')" style="font-size:22px; cursor:pointer; color:#64748b;">&times;</span>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:12px; padding:12px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <strong id="repStudentName" style="font-size:14px; color:#1e293b;">-</strong>
+                    <div id="repStudentClass" style="font-size:12px; color:var(--text-muted);">-</div>
+                </div>
+                <div id="repStudentBadge" class="badge-pill" style="margin:0;">⭐ Bronze Scholar</div>
+            </div>
+
+            <div style="font-size:13px; font-weight:700; margin-bottom:8px; color:#475569;">दिए गए टेस्ट का लेटेस्ट (ताज़ा) स्कोर:</div>
+            <div id="reportCardItemsContainer" style="max-height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
+                <!-- Test result rows injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: PROFILE EDIT MODAL -->
     <div id="profileModal" class="modal hidden">
         <div class="modal-card">
             <h3 style="margin-top:0;">प्रोफाइल अपडेट करें</h3>
@@ -624,14 +541,14 @@
             </div>
             <button class="btn-main" onclick="saveProfile()">सेव करें</button>
             <button class="btn-main" style="background:#ef4444; margin-top:10px;" onclick="logoutStudent()">लॉग आउट</button>
-            <button class="btn-main" style="background:#6b7280; margin-top:10px;" onclick="document.getElementById('profileModal').classList.add('hidden')">बंद करें</button>
+            <button class="btn-main" style="background:#6b7280; margin-top:10px;" onclick="closeModal('profileModal')">बंद करें</button>
         </div>
     </div>
 
-    <!-- Script Logic -->
+    <!-- Script Logic with Instant Memory Cache -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, query, where, addDoc, updateDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, query, where, addDoc, updateDoc, doc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyA6smf3Ud6Cy1-8gTxjbtgQ0mvW3kv1MUM",
@@ -654,6 +571,34 @@
 
         let currentCoaching = null;
         let loggedInStudent = JSON.parse(localStorage.getItem("examsathi_student_session_" + coachingSlug));
+        let globalQuestionCache = []; // Global in-memory cache for instant 0.1s quiz loading
+
+        const chapterMeta = [
+            { id: 1, name: "1. श्रम विभाजन और जाति प्रथा" },
+            { id: 2, name: "2. विष के दाँत" },
+            { id: 3, name: "3. भारत से हम क्या सीखें" },
+            { id: 4, name: "4. नाखून क्यों बढ़ते हैं" },
+            { id: 5, name: "5. नागरी लिपि" },
+            { id: 6, name: "6. बहादुर" },
+            { id: 7, name: "7. परम्परा का मूल्यांकन" },
+            { id: 8, name: "8. जित-जित मैं निरखत हूँ" },
+            { id: 9, name: "9. आविन्यों" },
+            { id: 10, name: "10. मछली" },
+            { id: 11, name: "11. नौबतखाने में इबादत" },
+            { id: 12, name: "12. शिक्षा और संस्कृति" },
+            { id: 13, name: "13. पद्य : राम नाम बिनु बिरथे..." },
+            { id: 14, name: "14. पद्य : प्रेम-अयनि श्री राधिका" },
+            { id: 25, name: "15. वर्णिका : दही वाली मंगम्मा" },
+            { id: 26, name: "16. वर्णिका : ढहते विश्वास" },
+            { id: 30, name: "17. व्याकरण : वर्ण एवं ध्वनि" },
+            { id: 32, name: "18. व्याकरण : संज्ञा" },
+            { id: 33, name: "19. व्याकरण : लिंग" },
+            { id: 38, name: "20. व्याकरण : क्रिया एवं काल" },
+            { id: 41, name: "21. व्याकरण : उपसर्ग" },
+            { id: 43, name: "22. व्याकरण : सन्धि" },
+            { id: 44, name: "23. व्याकरण : समास" },
+            { id: 48, name: "24. व्याकरण : मुहावरे" }
+        ];
 
         async function initPortal() {
             try {
@@ -687,17 +632,50 @@
                 console.error("Load Error:", e);
             }
 
+            renderChapterList();
+
             if (loggedInStudent) {
                 renderDashboard(loggedInStudent);
             }
+
+            // BACKGROUND PRE-FETCH: Load all questions into RAM once so tests open instantly without delay
+            setTimeout(async () => {
+                try {
+                    const qSnap = await getDocs(collection(db, "question_bank"));
+                    qSnap.forEach(d => {
+                        const data = d.data();
+                        if (data.question && data.options) {
+                            globalQuestionCache.push({ id: d.id, ...data });
+                        }
+                    });
+                    console.log("Global Question Cache Loaded:", globalQuestionCache.length);
+                } catch(err) { console.error("Cache load err:", err); }
+            }, 500);
         }
 
         initPortal();
 
+        function renderChapterList() {
+            const container = document.getElementById("chapterListContainer");
+            if (!container) return;
+            container.innerHTML = "";
+            chapterMeta.forEach(ch => {
+                container.innerHTML += `
+                    <div class="chapter-card">
+                        <span style="font-weight:600; font-size:12px; color:#1e293b;">${ch.name}</span>
+                        <div style="display:flex; gap:6px;">
+                            <button onclick="startQuiz('chapter', ${ch.id}, 1)" class="ch-btn">Set 1</button>
+                            <button onclick="startQuiz('chapter', ${ch.id}, 2)" class="ch-btn">Set 2</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
         window.toggleAuthMode = function() {
             document.getElementById("loginFormContainer").classList.toggle("hidden");
             document.getElementById("signupFormContainer").classList.toggle("hidden");
-        }
+        };
 
         document.getElementById("loginForm").addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -739,6 +717,7 @@
                 coachingSlug,
                 profilePic: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(name),
                 badge: "Bronze Scholar",
+                testHistory: {},
                 createdAt: serverTimestamp()
             };
 
@@ -761,8 +740,301 @@
             document.getElementById("dashStudentName").innerText = student.name;
             document.getElementById("dashStudentClass").innerText = student.studentClass;
             document.getElementById("dashBadge").innerText = "⭐ " + (student.badge || "Bronze Scholar");
-            document.getElementById("dashProfilePic").src = student.profilePic || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(student.name);
+            document.getElementById("dashProfilePic").src = student.profilePic || ("https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(student.name));
         }
+
+        /* ------------------ INSTANT MEMORY QUIZ ENGINE ------------------ */
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let userSelectedAnswers = {};
+        let quizTimerInterval = null;
+        let activeTestKey = '';
+        let activeTestName = '';
+
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        window.openTestSelector = function() {
+            if (!loggedInStudent) { alert("कृपया पहले लॉगिन करें!"); return; }
+            document.getElementById("testSelectModal").classList.remove("hidden");
+        };
+
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).classList.add("hidden");
+        };
+
+        window.startQuiz = async function(mode, chapterId = 1, setNumber = 1) {
+            closeModal('testSelectModal');
+            userSelectedAnswers = {};
+            currentQuestionIndex = 0;
+
+            const modal = document.getElementById("quizPlayerModal");
+            modal.classList.remove("hidden");
+            document.getElementById("questionContent").innerText = "प्रश्न लोड हो रहे हैं...";
+
+            // If cache isn't ready yet, fetch directly from Firestore as fallback
+            if (globalQuestionCache.length === 0) {
+                try {
+                    const qSnap = await getDocs(collection(db, "question_bank"));
+                    qSnap.forEach(d => {
+                        const data = d.data();
+                        if (data.question && data.options) globalQuestionCache.push({ id: d.id, ...data });
+                    });
+                } catch(e) { console.error("Fallback load err:", e); }
+            }
+
+            let loaded = [];
+            if (mode === 'chapter') {
+                activeTestKey = `ch_${chapterId}_set_${setNumber}`;
+                activeTestName = `अध्याय ${chapterId} (Set ${setNumber})`;
+                document.getElementById("quizTitleDisplay").innerText = activeTestName;
+                document.getElementById("quizMetaDisplay").innerText = "25 प्रश्न | समय: 20 मिनट";
+
+                // Filter from memory cache instantly (0.001s)
+                loaded = globalQuestionCache.filter(q => Number(q.chapter_id) === Number(chapterId));
+            } else {
+                activeTestKey = `mock_set_${setNumber}`;
+                activeTestName = `संपूर्ण मॉक टेस्ट (Set ${setNumber})`;
+                document.getElementById("quizTitleDisplay").innerText = activeTestName;
+                document.getElementById("quizMetaDisplay").innerText = "100 प्रश्न | समय: 90 मिनट";
+
+                // For mock tests, use deterministic set slicing from memory cache so questions are fixed per set without cross-mixing
+                const pool = globalQuestionCache.length > 0 ? globalQuestionCache : [];
+                // Deterministic slice per mock set (e.g., Set 1 takes 0-100, Set 2 takes 100-200, etc., cycling if needed)
+                const startIdx = ((setNumber - 1) * 100) % Math.max(1, pool.length - 100);
+                loaded = pool.slice(startIdx, startIdx + 100);
+                if (loaded.length < 100 && pool.length >= 100) {
+                    loaded = pool.slice(0, 100);
+                }
+            }
+
+            if (loaded.length === 0) {
+                alert("प्रश्न अभी लोड हो रहे हैं। कृपया 2 सेकंड बाद पुनः प्रयास करें!");
+                closeModal("quizPlayerModal");
+                return;
+            }
+
+            // Shuffle display order for this attempt without altering the set's fixed core questions
+            currentQuestions = shuffle([...loaded]);
+            const maxQs = mode === 'chapter' ? 25 : 100;
+            currentQuestions = currentQuestions.slice(0, Math.min(maxQs, currentQuestions.length));
+
+            renderQuestionUI();
+            startCountdown(mode === 'chapter' ? 20 * 60 : 90 * 60);
+        };
+
+        function renderQuestionUI() {
+            if (!currentQuestions.length) return;
+            const q = currentQuestions[currentQuestionIndex];
+            const correctKey = (q.correct_ans || q.answer || "").toLowerCase().trim();
+            const isAlreadyAnswered = userSelectedAnswers.hasOwnProperty(currentQuestionIndex);
+            const selectedKey = isAlreadyAnswered ? userSelectedAnswers[currentQuestionIndex].toLowerCase().trim() : null;
+
+            document.getElementById("questionCounter").innerText = `प्रश्न ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+            document.getElementById("questionContent").innerText = q.question;
+
+            document.getElementById("answeredStatus").innerText = isAlreadyAnswered ? "✓ हल किया गया" : "उत्तर दें";
+            document.getElementById("answeredStatus").style.color = isAlreadyAnswered ? "var(--primary)" : "#64748b";
+
+            const optBox = document.getElementById("optionsContainer");
+            optBox.innerHTML = "";
+
+            const optKeys = ['a', 'b', 'c', 'd'];
+            optKeys.forEach(k => {
+                if (!q.options || !q.options[k]) return;
+                const optEl = document.createElement("div");
+                optEl.className = "quiz-opt";
+
+                let rightWrongIndicator = "";
+                if (isAlreadyAnswered) {
+                    if (k === correctKey) {
+                        optEl.classList.add("opt-correct");
+                        rightWrongIndicator = `<span style="font-size:12px; font-weight:700;"><i class="fa-solid fa-check"></i> सही</span>`;
+                    } else if (k === selectedKey) {
+                        optEl.classList.add("opt-wrong");
+                        rightWrongIndicator = `<span style="font-size:12px; font-weight:700;"><i class="fa-solid fa-xmark"></i> गलत</span>`;
+                    }
+                }
+
+                optEl.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <strong>(${k.toUpperCase()})</strong> 
+                        <span>${q.options[k]}</span>
+                    </div>
+                    ${rightWrongIndicator}
+                `;
+
+                if (!isAlreadyAnswered) {
+                    optEl.onclick = () => {
+                        userSelectedAnswers[currentQuestionIndex] = k;
+                        renderQuestionUI();
+                    };
+                }
+
+                optBox.appendChild(optEl);
+            });
+
+            document.getElementById("quizPrevBtn").style.visibility = currentQuestionIndex === 0 ? "hidden" : "visible";
+            if (currentQuestionIndex === currentQuestions.length - 1) {
+                document.getElementById("quizNextBtn").style.display = "none";
+                document.getElementById("quizSubmitBtn").style.display = "block";
+            } else {
+                document.getElementById("quizNextBtn").style.display = "block";
+                document.getElementById("quizSubmitBtn").style.display = "none";
+            }
+        }
+
+        window.nextQuizQuestion = function() {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestionUI();
+            }
+        };
+
+        window.prevQuizQuestion = function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestionUI();
+            }
+        };
+
+        function startCountdown(seconds) {
+            clearInterval(quizTimerInterval);
+            let left = seconds;
+            quizTimerInterval = setInterval(() => {
+                const m = Math.floor(left / 60);
+                const s = left % 60;
+                document.getElementById("quizTimer").innerText = `⏱️ ${m}:${s < 10 ? '0' : ''}${s}`;
+                if (--left < 0) {
+                    clearInterval(quizTimerInterval);
+                    alert("समय समाप्त हो गया! आपका टेस्ट सबमिट हो रहा है।");
+                    calculateScore();
+                }
+            }, 1000);
+        }
+
+        window.confirmSubmitQuiz = function() {
+            const answeredCount = Object.keys(userSelectedAnswers).length;
+            const total = currentQuestions.length;
+            if (confirm(`आपने ${total} में से ${answeredCount} प्रश्नों के उत्तर दिए हैं। क्या आप टेस्ट सबमिट करना चाहते हैं?`)) {
+                calculateScore();
+            }
+        };
+
+        async function calculateScore() {
+            clearInterval(quizTimerInterval);
+            closeModal("quizPlayerModal");
+
+            let score = 0;
+            currentQuestions.forEach((q, idx) => {
+                const selected = userSelectedAnswers[idx];
+                const correct = q.correct_ans || q.answer;
+                if (selected && correct && selected.toLowerCase() === correct.toLowerCase()) {
+                    score++;
+                }
+            });
+
+            const total = currentQuestions.length;
+            const percent = Math.round((score / total) * 100);
+
+            let badge = "Bronze Scholar";
+            let emoji = "👍";
+            if (percent >= 80) { badge = "Gold Scholar"; emoji = "🏆"; }
+            else if (percent >= 60) { badge = "Silver Scholar"; emoji = "🥈"; }
+
+            document.getElementById("resultEmoji").innerText = emoji;
+            document.getElementById("scoreDisplay").innerText = `${score} / ${total}`;
+            document.getElementById("percentDisplay").innerText = `${percent}% अंक प्राप्त हुए`;
+            document.getElementById("newBadgeAward").innerText = `⭐ ${badge}`;
+            document.getElementById("resultModal").classList.remove("hidden");
+
+            if (loggedInStudent) {
+                if (!loggedInStudent.testHistory) loggedInStudent.testHistory = {};
+                
+                loggedInStudent.testHistory[activeTestKey] = {
+                    testName: activeTestName,
+                    score: score,
+                    total: total,
+                    percent: percent,
+                    attemptDate: new Date().toLocaleDateString('hi-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+                };
+
+                loggedInStudent.badge = badge;
+                localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
+                renderDashboard(loggedInStudent);
+
+                if (loggedInStudent.docId) {
+                    try {
+                        const studentRef = doc(db, "students", loggedInStudent.docId);
+                        await updateDoc(studentRef, {
+                            badge: badge,
+                            [`testHistory.${activeTestKey}`]: loggedInStudent.testHistory[activeTestKey]
+                        });
+                    } catch(e) { console.error("Firestore Score Sync Error:", e); }
+                }
+            }
+        }
+
+        window.openReportCardModal = async function() {
+            if (!loggedInStudent) { alert("कृपया पहले लॉगिन करें!"); return; }
+
+            document.getElementById("repStudentName").innerText = loggedInStudent.name || "-";
+            document.getElementById("repStudentClass").innerText = loggedInStudent.studentClass || "10th";
+            document.getElementById("repStudentBadge").innerText = "⭐ " + (loggedInStudent.badge || "Bronze Scholar");
+
+            const container = document.getElementById("reportCardItemsContainer");
+            container.innerHTML = "<div style='text-align:center; padding:15px; color:#64748b;'>डेटा लोड हो रहा है...</div>";
+            document.getElementById("reportCardModal").classList.remove("hidden");
+
+            let history = loggedInStudent.testHistory || {};
+            if (loggedInStudent.docId) {
+                try {
+                    const snap = await getDoc(doc(db, "students", loggedInStudent.docId));
+                    if (snap.exists() && snap.data().testHistory) {
+                        history = snap.data().testHistory;
+                        loggedInStudent.testHistory = history;
+                        localStorage.setItem("examsathi_student_session_" + coachingSlug, JSON.stringify(loggedInStudent));
+                    }
+                } catch(e) { console.error("History fetch error:", e); }
+            }
+
+            const testKeys = Object.keys(history);
+            if (testKeys.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:30px 10px; color:#64748b;">
+                        <i class="fa-solid fa-file-circle-question" style="font-size:32px; margin-bottom:8px; color:#cbd5e1;"></i>
+                        <div>आपने अभी तक कोई टेस्ट नहीं दिया है।</div>
+                        <button class="main-btn" onclick="closeModal('reportCardModal'); openTestSelector();" style="margin-top:12px; padding:8px 16px; font-size:13px; width:auto;">अभी टेस्ट दें</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = "";
+            testKeys.forEach(k => {
+                const item = history[k];
+                const isPassed = item.percent >= 50;
+                container.innerHTML += `
+                    <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:10px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <div style="font-weight:700; font-size:13px; color:#1e293b;">${item.testName}</div>
+                            <div style="font-size:11px; color:#64748b; margin-top:2px;">लेटेस्ट टेस्ट: ${item.attemptDate || 'आज'}</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-size:14px; font-weight:800; color:${isPassed ? 'var(--primary)' : '#ef4444'};">${item.score} / ${item.total}</div>
+                            <span style="font-size:11px; font-weight:600; padding:2px 6px; border-radius:4px; background:${isPassed ? '#dcfce7' : '#fee2e2'}; color:${isPassed ? '#15803d' : '#b91c1c'};">${item.percent}%</span>
+                        </div>
+                    </div>
+                `;
+            });
+        };
 
         window.openProfileEdit = function() {
             if (!loggedInStudent) {
@@ -795,6 +1067,7 @@
 
                 renderDashboard(loggedInStudent);
                 document.getElementById("profileModal").classList.add("hidden");
+                alert("प्रोफाइल सफलतापूर्वक अपडेट हो गई!");
             };
 
             if (fileInput.files && fileInput.files[0]) {
@@ -821,6 +1094,9 @@
         }
 
         window.switchNav = function(tab) {
+            if (tab === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
             if (tab === 'calendar') alert('Calendar & Schedule सेक्शन जल्द आ रहा है!');
             if (tab === 'messages') alert('Messages & Support सेक्शन जल्द आ रहा है!');
         }
